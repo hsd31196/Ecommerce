@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Ecommerce</string>
+    <string name="userprofile">Profile</string>
+    <string name="addressupdate">Update Address</string>
+
 </resources>
