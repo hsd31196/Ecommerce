@@ -11,15 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".Checkout"
             android:label="@string/checkout_page"></activity>
-        <activity
+        <activityg
             android:name=".AddressUpdate"
             android:label="@string/addressupdate" />
         <activity
             android:name=".UserProfile"
             android:label="@string/userprofile" />
-        <activity android:name=".CheckoutDeliveryAddress">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
