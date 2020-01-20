@@ -2,12 +2,16 @@ package com.example.ecommerce;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private boolean saveLogin;
+    private String username,pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +92,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
-        Button button=findViewById(R.id.signin);
-        button.setOnClickListener(new View.OnClickListener() {
+        TextView newUser=findViewById(R.id.newUser);
+        newUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getBaseContext(),RegistrationActivity.class);
@@ -96,11 +102,53 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         final TextView user=findViewById(R.id.userName);
+        final TextView password=findViewById(R.id.password);
+        final CheckBox rememberMe=findViewById(R.id.rememberMe);
+
+        final SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        final SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+
+        //remember me functionality
+
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (saveLogin == true) {
+            user.setText(loginPreferences.getString("username", ""));
+            password.setText(loginPreferences.getString("password", ""));
+            rememberMe.setChecked(true);
+        }
+
+        Button button=findViewById(R.id.signin);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(user.getWindowToken(), 0);
+
+                username = user.getText().toString();
+                pass = password.getText().toString();
+
+                if (rememberMe.isChecked()) {
+                    loginPrefsEditor.putBoolean("saveLogin", true);
+                    loginPrefsEditor.putString("username", username);
+                    loginPrefsEditor.putString("password", pass);
+                    loginPrefsEditor.apply();
+                } else {
+                    loginPrefsEditor.clear();
+                    loginPrefsEditor.apply();
+                }
+                Intent intent=new Intent(getBaseContext(),SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+
         TextView forgotPass=findViewById(R.id.forgotPass);
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendEmail(user.toString());
+                loginPrefsEditor.putString("username", username = user.getText().toString());
+                String email=loginPreferences.getString("username",null);
+                sendEmail(email);
+                
             }
         });
 
@@ -146,7 +194,7 @@ public class LoginActivity extends AppCompatActivity {
 
     protected void sendEmail(String email) {
         Log.i("Send email", "");
-        String TO = email;
+        String TO = "email";
 //        String[] CC = {""};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
