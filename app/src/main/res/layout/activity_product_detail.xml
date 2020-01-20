@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+    tools:context=".ProductDetail">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/productimages"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="top">
+    </androidx.viewpager.widget.ViewPager>
+
+
+    <TextView
+        android:id="@+id/productname"
+        android:text="Product Name"
+        android:padding="8dp"
+        android:textSize="5mm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center">
+    </TextView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical"
+            />
+
+        <TextView
+            android:text="Price"
+            android:id="@+id/price"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+           ></TextView>
+        
+        <TextView
+            android:id="@+id/pricevalue"
+            android:text="500/-"
+            android:gravity="center"
+            android:textColor="@color/green"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+
+
+        <TextView
+            android:id="@+id/rating"
+            android:text="Rating"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/ratingvalue"
+            android:text="4.5"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/pricevalue">
+
+        </TextView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <TextView
+        android:id="@+id/Description"
+        android:text="Description"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:scrollbars="vertical"></TextView>
+    <TextView
+        android:id="@+id/Specification"
+        android:text="Specification jsjfksejfkhsjefhesfheskfhkefjshfjkshfskdjfhsdkjdhsfjksdhfjkhjskhfjksdhfjkkjsdfhjksdhfkjsfhkjsdhfjshdfjksdhfjksdhkjfsdhkjfhdskjfhsdjsdjahsjdkhasjkdhasjkdhaksjhdjkashdjkashdjkashdjkashdjkashdjkshdjkashdjhasdjha"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:scrollbars="vertical"></TextView>
+
+    <TextView
+        android:id="@+id/reviews"
+        android:text="Reviews"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:scrollbars="vertical">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/addtocart"
+            android:text="Add to cart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            >
+
+        </Button>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
