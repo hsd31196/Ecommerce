@@ -1,7 +1,11 @@
+/*For Image Slider in Product Detail Page*/
+
 package com.example.ecommerce;
 
 import android.content.Context;
-import android.media.Image;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,20 +13,29 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+
 public class ImageAdapter extends PagerAdapter {
 
     private Context mcontext;
 
-    //load images in slider
-    private int[] mImageIds=new int[] {R.drawable.headphoness,R.drawable.mobiles,R.drawable.laptops};
+    private List<String> imageUrlList;
 
-    public ImageAdapter(Context mcontext) {
+    public ImageAdapter(Context mcontext,List<String> imageUrlList) {
+
         this.mcontext = mcontext;
+        this.imageUrlList=imageUrlList;
     }
 
     @Override
     public int getCount() {
-        return mImageIds.length;
+        return imageUrlList.size();
     }
 
     @Override
@@ -35,8 +48,15 @@ public class ImageAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         ImageView imageView=new ImageView(mcontext);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(mImageIds[position]);
-        container.addView(imageView,0);
+        URL url = null;
+        Bitmap bmp = null;
+        try {
+            url = new URL(imageUrlList.get(position));
+            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        imageView.setImageBitmap(bmp);
         return imageView;
 
     }
@@ -45,5 +65,9 @@ public class ImageAdapter extends PagerAdapter {
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((ImageView)object);
     }
+
+
+
+
 }
 
