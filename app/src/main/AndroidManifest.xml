@@ -2,14 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ecommerce">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ProductDetail"></activity>
+        <activity android:name=".cart.cart" />
+        <activity
+            android:name=".NavigationHome"
+            android:label="@string/title_activity_navigation_home"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- </activity> -->
+            <!-- <activity android:name=".MainActivity"> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

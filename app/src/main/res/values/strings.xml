@@ -1,3 +1,23 @@
-<resources>
-    <string name="app_name">Ecommerce</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Ecommerce Store</string>
+    <string name="title_activity_navigation_home" tools:ignore="ExtraTranslation">NavigationHome</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <!--    <string name="action_settings">Settings</string>-->
+    <string name="nav_header_cart">Cart</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_shop">Shop By Category</string>
+    <string name="menu_account">Account</string>
+    <string name="action_cart">Cart</string>
+    <string name="categoty1">Category1</string>
+    <string name="categoty2">Category2</string>
+    <string name="categoty3">Category3</string>
+    <string name="categoty4">Category4</string>
+    <string name="categoty5">Category5</string>
+
+
 </resources>
