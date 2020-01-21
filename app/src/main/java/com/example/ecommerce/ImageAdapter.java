@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,16 +48,19 @@ public class ImageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         ImageView imageView=new ImageView(mcontext);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        URL url = null;
-        Bitmap bmp = null;
-        try {
-            url = new URL(imageUrlList.get(position));
-            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        imageView.setImageBitmap(bmp);
+//        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//        URL url = null;
+//        Bitmap bmp = null;
+//        try {
+//            url = new URL(imageUrlList.get(position));
+//            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        imageView.setImageBitmap(bmp);
+
+        Glide.with(mcontext).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.ic_launcher_background)).load(imageUrlList.get(position)).into(imageView);
+        container.addView(imageView);
         return imageView;
 
     }

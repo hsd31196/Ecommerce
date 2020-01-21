@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 
 public interface FetchProductDetail {
 
-    @GET("file:///Users/harshdesai/Desktop/product.json")
+    @GET("5e2684982f00005700a4f43b.json")
     Call<List<Products>> getData();
 }

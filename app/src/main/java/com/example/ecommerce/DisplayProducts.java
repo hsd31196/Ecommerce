@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class DisplayProducts extends AppCompatActivity implements RecyclerViewAd
 
         OkHttpClient client = new OkHttpClient.Builder().build();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://www.mocky.io/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -43,14 +45,26 @@ public class DisplayProducts extends AppCompatActivity implements RecyclerViewAd
         //call API
         Call<List<Products>> call = fetchProductDetail.getData();
         call.enqueue(new Callback<List<Products>>() {
+
             @Override
             public void onResponse(Call<List<Products>> call, Response<List<Products>> response) {
+
+                if (!response.isSuccessful())
+                    Log.i("TAG", "Error: " + response.code());
+                else
                 generateDataList(response.body());
             }
 
             @Override
             public void onFailure(Call<List<Products>> call, Throwable t) {
-                Toast.makeText(DisplayProducts.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                if (t instanceof IOException) {
+                    Toast.makeText(DisplayProducts.this, "this is an actual network failure :( inform the user and possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(DisplayProducts.this, "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    // log to some central bug tracking service
+                }
             }
         });
 
@@ -62,12 +76,14 @@ public class DisplayProducts extends AppCompatActivity implements RecyclerViewAd
         recyclerViewAdapter = new RecyclerViewAdapter(productsList, DisplayProducts.this);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void onClick(Products products) {
-        Intent i = new Intent(getApplicationContext(), ProductDetail.class);
-        i.putExtra("Product",products);
+        Intent i = new Intent(this, ProductDetail.class);
+        i.putExtra("product",products);
         startActivity(i);
     }
 

@@ -7,101 +7,105 @@ import java.util.List;
 
 public class Products implements Serializable {
 
+    @SerializedName("reviews")
+    private String reviews;
+
     @SerializedName("image_url")
-    private String productName;
+    private List<String> imageUrl;
+
     @SerializedName("price")
     private int price;
-    @SerializedName("image_url")
-    private List<String> imgurls;
+
     @SerializedName("rating")
     private int rating;
+
     @SerializedName("description")
     private String description;
 
     @SerializedName("specification")
-    private ProductSpecifications specification;
-    @SerializedName("reviews")
-    private String reviews;
+    private String specification;
+
+    @SerializedName("product_name")
+    private String productName;
 
 
-
-    public Products(String productName, int price, List<String> imgurls, int rating, String description, ProductSpecifications specification, String reviews) {
-        this.productName = productName;
+    public Products(String reviews, List<String> imageUrl, int price, int rating, String description, String specification, String productName) {
+        this.reviews = reviews;
+        this.imageUrl = imageUrl;
         this.price = price;
-        this.imgurls = imgurls;
         this.rating = rating;
         this.description = description;
-        specification = specification;
+        this.specification = specification;
+        this.productName = productName;
+    }
+
+    public void setReviews(String reviews){
         this.reviews = reviews;
     }
 
-    public List<String> getImgurls() {
-        return imgurls;
-    }
-
-    public void setImgurls(List<String> imgurls) {
-        this.imgurls = imgurls;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public ProductSpecifications getSpecification() {
-        return specification;
-    }
-
-    public void setSpecification(ProductSpecifications specification) {
-        specification = specification;
-    }
-
-    public String getReviews() {
+    public String getReviews(){
         return reviews;
     }
 
-    public void setReviews(String reviews) {
-        this.reviews = reviews;
+    public void setImageUrl(List<String> imageUrl){
+        this.imageUrl = imageUrl;
     }
 
-    public String getProductName() {
-        return productName;
+    public List<String> getImageUrl(){
+        return imageUrl;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public void setPrice(int price) {
+    public void setPrice(int price){
         this.price = price;
     }
 
+    public int getPrice(){
+        return price;
+    }
+
+    public void setRating(int rating){
+        this.rating = rating;
+    }
+
+    public int getRating(){
+        return rating;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public void setSpecification(String specification){
+        this.specification = specification;
+    }
+
+    public String getSpecification(){
+        return specification;
+    }
+
+    public void setProductName(String productName){
+        this.productName = productName;
+    }
+
+    public String getProductName(){
+        return productName;
+    }
+
     @Override
-    public String toString() {
-        return "Products{" +
-                "productName='" + productName + '\'' +
-                ", price=" + price +
-                ", imgurl='" + imgurls + '\'' +
-                ", rating=" + rating +
-                ", description='" + description + '\'' +
-                ", specification=" + specification +
-                ", reviews='" + reviews + '\'' +
-                '}';
+    public String toString(){
+        return
+                "Response{" +
+                        "reviews = '" + reviews + '\'' +
+                        ",image_url = '" + imageUrl + '\'' +
+                        ",price = '" + price + '\'' +
+                        ",rating = '" + rating + '\'' +
+                        ",description = '" + description + '\'' +
+                        ",specification = '" + specification + '\'' +
+                        ",product_name = '" + productName + '\'' +
+                        "}";
     }
 }

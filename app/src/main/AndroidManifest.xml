@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".DisplayProducts"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".ProductDetail"
             android:label="@string/productdetail" />
@@ -24,7 +25,7 @@
         <activity
             android:name=".UserProfile"
             android:label="@string/userprofile" />
-        <activity android:name=".DisplayProducts">
+        <activity android:name=".OrderHistory">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

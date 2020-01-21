@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
@@ -45,22 +46,23 @@ public class ProductDetail extends AppCompatActivity {
         imagesurlList=new ArrayList<>();
 
 
-        imagesurlList=products.getImgurls();
+        imagesurlList=products.getImageUrl();
         ImageAdapter imageAdapter=new ImageAdapter(this,imagesurlList);
         viewPager.setAdapter(imageAdapter);
 
         TextView product_name=(TextView) findViewById(R.id.productname);
         TextView price=(TextView) findViewById(R.id.pricevalue);
-        TextView rating=(TextView) findViewById(R.id.ratingvalue);
+        RatingBar rating=(RatingBar) findViewById(R.id.ratingvalue);
         TextView desc=(TextView) findViewById(R.id.Description);
         TextView specifications=(TextView) findViewById(R.id.Specification);
         TextView review=(TextView) findViewById(R.id.reviews);
 
         product_name.setText(products.getProductName());
-        price.setText(products.getPrice());
-        rating.setText(products.getRating());
+        price.setText(String.valueOf(products.getPrice()));
+        rating.setRating(products.getRating());
         desc.setText(products.getDescription());
-        review.setText(products.getRating());
+        specifications.setText(products.getSpecification());
+        review.setText(products.getReviews());
 
 
 

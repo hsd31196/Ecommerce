@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,8 +44,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, final int position) {
 
+        //set the data in views
         holder.title.setText(productsList.get(position).getProductName());
         holder.price.setText(String.valueOf(productsList.get(position).getPrice()));
+        holder.rating.setRating(productsList.get(position).getRating());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +57,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-        Glide.with(holder.productImage.getContext()).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.ic_launcher_background)).load(productsList.get(position).getImgurls()).into(holder.productImage);
+        //Picasso.with(context).load(your image url).into(imageView);
+        Glide.with(holder.productImage.getContext()).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.ic_launcher_background)).load(productsList.get(position).getImageUrl().get(0)).into(holder.productImage);
 
     }
 
@@ -71,6 +75,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         CardView cardView;
         TextView title;
         TextView price;
+        RatingBar rating;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             productImage=(ImageView) itemView.findViewById(R.id.display_image);
             price=(TextView) itemView.findViewById(R.id.display_price);
             cardView=(CardView) itemView.findViewById(R.id.card_view);
+            rating=(RatingBar) itemView.findViewById(R.id.ratingbar);
 
         }
     }
