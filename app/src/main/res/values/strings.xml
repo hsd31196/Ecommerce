@@ -7,5 +7,7 @@
     <string name="productdetail">Product Detail</string>
     <string name="title_activity_list_view">ListView</string>
     <string name="checkout_page">Checkout</string>
+    <string name="display_products">Products Catalog</string>
+    <string name="order_history">My Orders</string>
 
 </resources>

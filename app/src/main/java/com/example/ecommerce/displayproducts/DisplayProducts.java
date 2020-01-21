@@ -1,4 +1,4 @@
-package com.example.ecommerce;
+package com.example.ecommerce.displayproducts;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -8,6 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.ecommerce.productdetail.FetchProductDetail;
+import com.example.ecommerce.productdetail.ProductDetail;
+import com.example.ecommerce.R;
+import com.example.ecommerce.adapters.RecyclerViewAdapter;
+import com.example.ecommerce.pojo.Products;
 
 import java.io.IOException;
 import java.util.ArrayList;

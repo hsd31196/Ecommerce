@@ -1,4 +1,6 @@
-package com.example.ecommerce;
+package com.example.ecommerce.orderhistory;
+
+import com.example.ecommerce.pojo.Orders;
 
 import java.util.List;
 

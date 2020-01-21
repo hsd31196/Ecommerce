@@ -1,4 +1,4 @@
-package com.example.ecommerce;
+package com.example.ecommerce.pojo;
 
 import com.google.gson.annotations.SerializedName;
 

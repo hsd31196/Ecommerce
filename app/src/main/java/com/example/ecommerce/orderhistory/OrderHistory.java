@@ -1,13 +1,16 @@
-package com.example.ecommerce;
+package com.example.ecommerce.orderhistory;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.ecommerce.R;
+import com.example.ecommerce.adapters.OrderHistoryAdapter;
+import com.example.ecommerce.pojo.Orders;
 
 import java.io.IOException;
 import java.util.List;

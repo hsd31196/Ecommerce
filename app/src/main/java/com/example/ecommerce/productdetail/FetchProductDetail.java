@@ -1,4 +1,6 @@
-package com.example.ecommerce;
+package com.example.ecommerce.productdetail;
+
+import com.example.ecommerce.pojo.Products;
 
 import java.util.List;
 

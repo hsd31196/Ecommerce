@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayProducts"></activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".UserProfile"
+            android:label="@string/display_products"></activity>
+
+        <activity android:name=".orderhistory.OrderHistory"
+            android:label="@string/order_history"/>
         <activity
-            android:name=".ProductDetail"
+            android:name=".productdetail.ProductDetail"
             android:label="@string/productdetail" />
         <activity
             android:name=".Checkout"
@@ -23,9 +26,10 @@
             android:name=".AddressUpdate"
             android:label="@string/addressupdate" />
         <activity
-            android:name=".UserProfile"
+            android:name=".MainActivity"
             android:label="@string/userprofile" />
-        <activity android:name=".OrderHistory">
+
+        <activity android:name=".displayproducts.DisplayProducts">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
