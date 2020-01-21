@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     SignInButton sign;
     int RC_SIGN_IN=0;
     GoogleSignInClient mGoogleSignInClient;
+    APIInterface apiInterface;
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
@@ -151,8 +152,6 @@ public class LoginActivity extends AppCompatActivity {
                 
             }
         });
-
-
     }
 
     private void signIn() {
