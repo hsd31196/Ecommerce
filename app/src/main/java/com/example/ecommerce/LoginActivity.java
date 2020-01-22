@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,12 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import java.util.Arrays;
+import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -44,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     private boolean saveLogin;
     private String username,pass;
+    List<Object> token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +110,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        final TextView user=findViewById(R.id.userName);
-        final TextView password=findViewById(R.id.password);
+        final EditText user=findViewById(R.id.userName);
+        final EditText password=findViewById(R.id.password);
         final CheckBox rememberMe=findViewById(R.id.rememberMe);
 
         final SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
@@ -128,17 +136,40 @@ public class LoginActivity extends AppCompatActivity {
                 username = user.getText().toString();
                 pass = password.getText().toString();
 
-                if (rememberMe.isChecked()) {
-                    loginPrefsEditor.putBoolean("saveLogin", true);
-                    loginPrefsEditor.putString("username", username);
-                    loginPrefsEditor.putString("password", pass);
-                    loginPrefsEditor.apply();
-                } else {
-                    loginPrefsEditor.clear();
-                    loginPrefsEditor.apply();
+                if (validateLogin(username,pass))
+                {
+                    /*if (rememberMe.isChecked()) {
+                        loginPrefsEditor.putBoolean("saveLogin", true);
+                        loginPrefsEditor.putString("username", username);
+                        loginPrefsEditor.putString("password", pass);
+                        loginPrefsEditor.apply();
+                    } else {
+                        loginPrefsEditor.clear();
+                        loginPrefsEditor.apply();
+                    }*/
+
+                    apiInterface=API.getClient().create(APIInterface.class);
+                    LoginCheck loginCheck=new LoginCheck(username,pass);
+                    Call<ResponseBody> call=apiInterface.login(loginCheck);
+                    call.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            token= (List<Object>) response.body();
+//                            loginPreferences.getString(token.get(0).toString(),""); // shared preferences to store access tokens should be here
+//                            loginPrefsEditor.putString();
+                            Toast.makeText(LoginActivity.this,"Registration Success",Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(LoginActivity.this,"Registration Success",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+                    Intent intent=new Intent(getBaseContext(),SecondActivity.class);
+                    startActivity(intent);
                 }
-                Intent intent=new Intent(getBaseContext(),SecondActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -191,14 +222,25 @@ public class LoginActivity extends AppCompatActivity {
     AccessToken accessToken = AccessToken.getCurrentAccessToken();
     boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
 
+    private boolean validateLogin(String username, String password){
+        if(username == null || username.trim().length() == 0){
+            Toast.makeText(this, "Username is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(password == null || password.trim().length() == 0){
+            Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
     protected void sendEmail(String email) {
         Log.i("Send email", "");
         String TO = "email";
 //        String[] CC = {""};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
-        emailIntent.setData(Uri.parse(email));
-        emailIntent.setType("text/plain");
+        emailIntent.setData(Uri.parse(email)).setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
 //        emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Forgot password");

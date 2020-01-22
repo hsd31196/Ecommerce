@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class RegistrationDTO {
 
-    @SerializedName("firstName")
+    @SerializedName("name")
     private String firstName;
-
-    @SerializedName("lastName")
-    private String lastName;
+//
+//    @SerializedName("lastName")
+//    private String lastName;
 
     @SerializedName("email")
     private String email;
@@ -16,11 +16,11 @@ public class RegistrationDTO {
     @SerializedName("password")
     private String password;
 
-    @SerializedName("mobile")
-    private String mobile;
-
-    @SerializedName("address")
-    private String address;
+//    @SerializedName("mobile")
+//    private String mobile;
+//
+//    @SerializedName("address")
+//    private String address;
 
     public String getFirstName() {
         return firstName;
@@ -30,13 +30,13 @@ public class RegistrationDTO {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
 
     public String getEmail() {
         return email;
@@ -53,20 +53,37 @@ public class RegistrationDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+//
+//    public String getMobile() {
+//        return mobile;
+//    }
+//
+//    public void setMobile(String mobile) {
+//        this.mobile = mobile;
+//    }
+//
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
 
-    public String getMobile() {
-        return mobile;
+
+    public RegistrationDTO(String firstName, String email, String password) {
+        this.firstName = firstName;
+        this.email = email;
+        this.password = password;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    @Override
+    public String toString() {
+        return "RegistrationDTO{" +
+                "firstName='" + firstName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
+
