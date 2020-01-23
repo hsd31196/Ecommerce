@@ -9,6 +9,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import java.util.List;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -18,9 +19,11 @@ import com.synnapps.carouselview.ImageListener;
 public class HomeAdapter  extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
 
     List<Products> listItems;
-public HomeAdapter(List<Products> list)
+    CustomInterface customInterface;
+public HomeAdapter(List<Products> list,CustomInterface customInterface)
 {
     listItems=list;
+    this.customInterface=customInterface;
 }
 
     @NonNull
@@ -35,12 +38,18 @@ public HomeAdapter(List<Products> list)
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-    Products object=listItems.get(position);
+    public void onBindViewHolder(@NonNull Viewholder holder, final int position) {
+    final Products object=listItems.get(position);
         Glide.with(holder.imageView.getContext()).load(object.getImgurls().get(0)).into(holder.imageView);
         holder.productName.setText(object.getProductName());
         holder.productPrice.setText(Double.toString(object.getPrice()));
         holder.ratingBar.setRating((float) object.getRating());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customInterface.onClick(listItems.get(position));
+            }
+        });
 
     }
 
@@ -60,6 +69,7 @@ public HomeAdapter(List<Products> list)
         TextView productName;
         TextView productPrice;
         RatingBar ratingBar;
+        CardView cardView;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -67,10 +77,13 @@ public HomeAdapter(List<Products> list)
             productName=itemView.findViewById(R.id.display_prod_name);
             productPrice=itemView.findViewById(R.id.display_price);
             ratingBar=itemView.findViewById(R.id.ratingId);
+            cardView=itemView.findViewById(R.id.card_view);
         }
     }
 
     public interface CustomInterface{
+
+    void onClick(Products products);
 
     }
 }

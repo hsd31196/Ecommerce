@@ -1,5 +1,7 @@
 package com.example.ecommerce.ui.home;
 import java.util.List;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ecommerce.App;
 import com.example.ecommerce.CategoryAppInterface;
 import com.example.ecommerce.HomeAdapter;
+import com.example.ecommerce.ProductDetail;
 import com.example.ecommerce.Products;
 import com.example.ecommerce.R;
 import com.synnapps.carouselview.CarouselView;
@@ -81,7 +84,7 @@ public class HomeFragment extends Fragment implements Callback<List<Products>>, 
     public void onResponse(Call<List<Products>> call, Response<List<Products>> response) {
         returnedProducts=response.body();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        HomeAdapter adapter=new HomeAdapter(returnedProducts);
+        HomeAdapter adapter=new HomeAdapter(returnedProducts, HomeFragment.this);
         recyclerView.setAdapter(adapter);
 
 
@@ -90,6 +93,12 @@ public class HomeFragment extends Fragment implements Callback<List<Products>>, 
     @Override
     public void onFailure(Call<List<Products>> call, Throwable t) {
 
+    }
+
+    @Override
+    public void onClick(Products products) {
+        Intent i=new Intent(getContext(), ProductDetail.class);
+        startActivity(i);
     }
 }
 

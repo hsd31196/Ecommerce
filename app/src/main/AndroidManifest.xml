@@ -19,7 +19,8 @@
         <activity android:name=".ProductDetail" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".cart.cart" />
         <activity
             android:name=".NavigationHome"

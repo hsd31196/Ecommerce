@@ -216,7 +216,8 @@ public class AccountFragment extends Fragment  implements View.OnClickListener {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                               //  token = (List<Object>) response.body();
-                               // System.out.println("rtilewbhd   "+token);
+                               //
+                                // System.out.println("rtilewbhd   "+token);
                                 loginPrefsEditor.putBoolean("isLoggedIn", true);
                                 loginPrefsEditor.commit();
                                 System.out.println(loginPreferences.getBoolean("isLoggedIn",false));
