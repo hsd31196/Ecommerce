@@ -41,7 +41,7 @@ public class DisplayProducts extends AppCompatActivity implements RecyclerViewAd
 
         OkHttpClient client = new OkHttpClient.Builder().build();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.mocky.io/v2/")
+                .baseUrl("http://172.16.20.90:8080")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

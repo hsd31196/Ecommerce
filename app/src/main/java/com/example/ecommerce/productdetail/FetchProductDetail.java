@@ -9,6 +9,6 @@ import retrofit2.http.GET;
 
 public interface FetchProductDetail {
 
-    @GET("5e2684982f00005700a4f43b.json")
+    @GET("/search/getByCategory/badminton")
     Call<List<Products>> getData();
 }

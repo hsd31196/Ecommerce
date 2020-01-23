@@ -10,18 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ecommerce.pojo.CartProductsItem;
 import com.example.ecommerce.pojo.Orders;
 import com.example.ecommerce.R;
+import com.example.ecommerce.pojo.TempOrders;
 
 import java.util.List;
 
 public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.CustomViewHolder>
 {
 
-    private List<Orders> ordersList;
+    private TempOrders ordersList;
     CustomInterface customInterface;
 
-    public OrderHistoryAdapter(List<Orders> ordersList, CustomInterface customInterface) {
+    public OrderHistoryAdapter(TempOrders ordersList, CustomInterface customInterface) {
         this.ordersList = ordersList;
         this.customInterface = customInterface;
     }
@@ -37,14 +39,14 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, final int position) {
-        holder.order_title.setText(ordersList.get(position).getProductName());
-        holder.order_price.setText(String.valueOf(ordersList.get(position).getPrice()));
-        holder.order_date.setText(ordersList.get(position).getOrderDate());
+        holder.order_title.setText(ordersList.getCartProducts().get(position).getProductName());
+        holder.order_price.setText(String.valueOf(ordersList.getCartProducts().get(position).getPrice()));
+        holder.order_date.setText(ordersList.getOrderDate());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                customInterface.onClick(ordersList.get(position));
+                customInterface.onClick(ordersList);
 
             }
         });
@@ -55,7 +57,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
 
     @Override
     public int getItemCount() {
-        return ordersList.size();
+        return ordersList.getCartProducts().size();
     }
 
 
@@ -81,6 +83,6 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     }
     public interface CustomInterface
     {
-        void onClick(Orders orders);
+        void onClick(TempOrders ordersList);
     }
 }

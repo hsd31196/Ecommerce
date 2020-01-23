@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Delivery Address"
+        android:text="Billing Address:"
         android:padding="8dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/deliveryaddressvalue"
@@ -31,6 +31,7 @@
 
     <Button
         android:id="@+id/updateaddress"
+        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
@@ -150,11 +151,12 @@
         app:layout_constraintTop_toBottomOf="@id/updateaddress"></TextView>
 
     <Button
-        android:id="@+id/PlaceOrder"
-        android:text="Buy Now"
-        android:padding="8dp"
+        android:id="@+id/placeorder"
+        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Buy Now"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/paymentmethod"></Button>
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_cart"
+        android:orderInCategory="100"
+        android:title="Search"
+        android:icon="@drawable/nav_cart"
+        app:showAsAction="always"
+        android:onClick="opencart"
+        ></item>
+    <item android:id="@+id/search_view"
+        android:title="@android:string/search_go"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.widget.SearchView" />
+</menu>

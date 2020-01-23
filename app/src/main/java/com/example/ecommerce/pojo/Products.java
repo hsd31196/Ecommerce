@@ -7,16 +7,16 @@ import java.util.List;
 
 public class Products implements Serializable {
 
-    @SerializedName("reviews")
+    @SerializedName("review")
     private String reviews;
 
-    @SerializedName("image_url")
+    @SerializedName("imageURL")
     private List<String> imageUrl;
 
-    @SerializedName("price")
+    @SerializedName("mrp")
     private int price;
 
-    @SerializedName("rating")
+    @SerializedName("productRating")
     private int rating;
 
     @SerializedName("description")
@@ -25,8 +25,34 @@ public class Products implements Serializable {
     @SerializedName("specification")
     private String specification;
 
-    @SerializedName("product_name")
+    @SerializedName("productName")
     private String productName;
+
+
+
+//    @SerializedName("productId")
+//    private String productId;
+//
+//    @SerializedName("productStock")
+//    private int productStock;
+//
+//
+//    @SerializedName("categoryName")
+//    private String categoryName;
+//
+//
+//    @SerializedName("merchantId")
+//    private String merchantId;
+//
+//
+//    @SerializedName("merchantPrice")
+//    private int merchantPrice;
+
+
+
+
+
+
 
 
     public Products(String reviews, List<String> imageUrl, int price, int rating, String description, String specification, String productName) {

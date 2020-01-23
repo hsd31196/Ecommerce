@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.ecommerce.OrderDetail;
 import com.example.ecommerce.R;
 import com.example.ecommerce.adapters.OrderHistoryAdapter;
+import com.example.ecommerce.pojo.CartProductsItem;
 import com.example.ecommerce.pojo.Orders;
+import com.example.ecommerce.pojo.TempOrders;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OrderHistory extends AppCompatActivity implements OrderHistoryAdapter.CustomInterface{
 
-    List<Orders> ordersList;
+    TempOrders ordersList;
     private OrderHistoryAdapter orderHistoryAdapter;
     private RecyclerView recyclerView;
 
@@ -43,11 +47,11 @@ public class OrderHistory extends AppCompatActivity implements OrderHistoryAdapt
         FetchOrderHistory fetchOrderHistory = retrofit.create(FetchOrderHistory.class);
 
         //call API
-        Call<List<Orders>> call = fetchOrderHistory.getData();
-        call.enqueue(new Callback<List<Orders>>() {
+        Call<TempOrders> call = fetchOrderHistory.getData();
+        call.enqueue(new Callback<TempOrders>() {
 
             @Override
-            public void onResponse(Call<List<Orders>> call, Response<List<Orders>> response) {
+            public void onResponse(Call<TempOrders> call, Response<TempOrders> response) {
 
                 if (!response.isSuccessful())
                     Log.i("TAG", "Error: " + response.code());
@@ -56,7 +60,7 @@ public class OrderHistory extends AppCompatActivity implements OrderHistoryAdapt
             }
 
             @Override
-            public void onFailure(Call<List<Orders>> call, Throwable t) {
+            public void onFailure(Call<TempOrders> call, Throwable t) {
                 if (t instanceof IOException) {
                     Toast.makeText(OrderHistory.this, "this is an actual network failure :( inform the user and possibly retry", Toast.LENGTH_SHORT).show();
                     // logging probably not necessary
@@ -69,7 +73,7 @@ public class OrderHistory extends AppCompatActivity implements OrderHistoryAdapt
         });
     }
 
-    private void generateDataList(List<Orders> ordersList) {
+    private void generateDataList(TempOrders ordersList) {
         recyclerView = findViewById(R.id.recyclerorder);
         orderHistoryAdapter = new OrderHistoryAdapter(ordersList, OrderHistory.this);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
@@ -79,10 +83,10 @@ public class OrderHistory extends AppCompatActivity implements OrderHistoryAdapt
     }
 
     @Override
-    public void onClick(Orders orders) {
-//        Intent i = new Intent(this, ProductDetail.class);
-//        i.putExtra("orders",orders);
-//        startActivity(i);
+    public void onClick(TempOrders ordersList) {
+        Intent i = new Intent(this, OrderDetail.class);
+        //i.putExtra("orders",orders);
+        startActivity(i);
     }
 
 
