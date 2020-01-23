@@ -19,5 +19,24 @@
     <string name="categoty4">Category4</string>
     <string name="categoty5">Category5</string>
 
+    <string name="username">User Name</string>
+    <string name="password">Password</string>
+    <string name="rememberMe">Remember Me</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="newUser">New User</string>
+    <string name="signin">Sign In</string>
+    <string name="googleLogin">Sign in with Google</string>
+    <string name="fbLogin">Sign in with Facebook</string>
+    <string name="facebook_app_id">899264077169460</string>
+    <string name="fb_login_protocol_scheme">fb899264077169460</string>
+    <string name="edittext">New User Registration</string>
+    <string name="editfname">Enter First Name</string>
+    <string name="editlname">Enter Last Name</string>
+    <string name="editemail">Enter Email id</string>
+    <string name="editpass">Enter Password</string>
+    <string name="editaddress">Enter your address</string>
+    <string name="editmobile">Enter your mobile number</string>
+    <string name="register">Register</string>
+
 
 </resources>

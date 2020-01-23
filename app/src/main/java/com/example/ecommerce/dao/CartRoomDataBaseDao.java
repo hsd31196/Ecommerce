@@ -15,8 +15,8 @@ public interface CartRoomDataBaseDao {
     @Insert
     void insert(CartRoomEntity cartRoomDataBase);
 
-//    @Query("delete from cartroomdatabase where cartId=")
-//    void deleteCartItem(@);
+    @Query("delete from CartRoomEntity where productId=:id")
+    void deleteById(String id);
 
     @Query("select * from CartRoomEntity")
     LiveData<List<CartRoomEntity>> getAllCartItems();
@@ -29,4 +29,7 @@ public interface CartRoomDataBaseDao {
 
     @Query("update CartRoomEntity  set qty=qty+1 where productId=:id")
     void update(String id);
+
+    @Query("update CartRoomEntity set qty=qty-1 where productId=:id")
+    void updateDecrement(String id);
 }

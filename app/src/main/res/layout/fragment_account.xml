@@ -7,7 +7,7 @@
 
 
 
-<!--    chnage the view here to display login forms if not logged in and if logged in then display profile-->
+<!--    chnage the view here to display activity_login forms if not logged in and if logged in then display profile-->
 
     <TextView
         android:id="@+id/text_account"

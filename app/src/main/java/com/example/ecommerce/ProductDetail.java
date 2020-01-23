@@ -7,8 +7,13 @@ package com.example.ecommerce;
         import android.content.Intent;
         import android.os.Bundle;
         import android.text.method.ScrollingMovementMethod;
+        import android.view.Gravity;
+        import android.view.LayoutInflater;
+        import android.view.MotionEvent;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.LinearLayout;
+        import android.widget.PopupWindow;
         import android.widget.RatingBar;
         import android.widget.TextView;
 
@@ -25,7 +30,6 @@ public class ProductDetail extends AppCompatActivity {
 
     private List<String> imagesurlList;
     CartViewModel cartViewModel;
-
 
 
     @Override
@@ -48,6 +52,8 @@ public class ProductDetail extends AppCompatActivity {
 
         ViewPager viewPager=findViewById(R.id.productimages);
 
+
+
         //load images in slider
         imagesurlList=new ArrayList<>();
 
@@ -65,7 +71,7 @@ public class ProductDetail extends AppCompatActivity {
 
         product_name.setText(products.getProductName());
         price.setText(String.valueOf(products.getPrice()));
-        rating.setRating(products.getRating());
+        rating.setRating((float)products.getRating());
         desc.setText(products.getDescription());
         specifications.setText(products.getSpecification());
         review.setText(products.getReviews());
@@ -78,23 +84,44 @@ public class ProductDetail extends AppCompatActivity {
                // Intent replyIntent = new Intent();
                 CartRoomEntity entity=new CartRoomEntity();
                 TextView produtName=findViewById(R.id.productname);
-                entity.setProductName(produtName.getText().toString());
-                entity.setTotalAmount(R.id.pricevalue);
+                System.out.println(products.getProductName());
+                entity.setProductName(products.getProductName());
+                entity.setTotalAmount(products.getDiscountedPrice());
                 entity.setImageUrl(products.getImgurls().get(0));
                 //entity.setProductId();
-                //entity.setMerchantId();
+                entity.setMerchantId(products.getMerchantId());
                 entity.setQty(1);
-                entity.setProductId("12345");
-                System.out.println(entity.getProductId()+entity.getProductName());
-                int count=cartViewModel.getById("12345");
+                entity.setProductId(products.getProductId());
+               // System.out.println(entity.getProductId()+entity.getProductName());
+                int count=cartViewModel.getById(products.getProductId());
                 if(count==0) {
                     cartViewModel.insert(entity);
                 }
                 else
                 {
-                    cartViewModel.update("12345");
+                    cartViewModel.update(products.getProductId());
                 }
                 //System.out.println(cartViewModel.getAllItems());
+
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.popup, null);
+                int width= LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height=LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable=true;
+                final PopupWindow popupWindow=new PopupWindow(popupView,width,height,focusable);
+                popupWindow.showAtLocation(popupView, Gravity.BOTTOM,0,0);
+                popupWindow.setElevation(25);
+                popupView.setOnTouchListener(new View.OnTouchListener(){
+
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+
+
 
             }
         });

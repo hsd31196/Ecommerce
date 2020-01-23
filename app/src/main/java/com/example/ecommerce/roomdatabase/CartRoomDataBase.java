@@ -14,7 +14,7 @@ import com.example.ecommerce.dao.CartRoomDataBaseDao;
 import com.example.ecommerce.entity.CartRoomEntity;
 
 
-@Database(entities = {CartRoomEntity.class},version = 3,exportSchema = false)
+@Database(entities = {CartRoomEntity.class},version = 4,exportSchema = false)
 public abstract  class CartRoomDataBase extends RoomDatabase {
 
     private static CartRoomDataBase instance;
@@ -44,35 +44,35 @@ public abstract  class CartRoomDataBase extends RoomDatabase {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
-            new PopulateDbAsync(instance).execute();
+            //new PopulateDbAsync(instance).execute();
         }
     };
-    private static class PopulateDbAsync extends AsyncTask<CartRoomEntity,Void,Void>{
-
-        private final CartRoomDataBaseDao cartRoomDataBaseDao;
-        String cartId="1";
-        String userId="34";
-        String productId="PA1";
-        String merchantId="m1";
-        double totalAmount=2000;
-        int  qty=2;
-        CartRoomEntity sampleEntity=new CartRoomEntity();
-
-        PopulateDbAsync(CartRoomDataBase cartRoomDataBase){
-            cartRoomDataBaseDao=cartRoomDataBase.cartRoomDataBaseDao();
-        }
-
-        @Override
-        protected Void doInBackground(CartRoomEntity... cartRoomEntities) {
-//            cartRoomDataBaseDao.deleteAll();
-           // sampleEntity.setCartId(cartId);
-            //sampleEntity.setMerchantId(merchantId);
-            sampleEntity.setProductId(productId);
-            sampleEntity.setQty(qty);
-            //sampleEntity.setUserId(userId);
-            sampleEntity.setTotalAmount(totalAmount);
-  //          cartRoomDataBaseDao.insert(sampleEntity);
-            return null;
-        }
-    }
+//    private static class PopulateDbAsync extends AsyncTask<CartRoomEntity,Void,Void>{
+//
+//        private final CartRoomDataBaseDao cartRoomDataBaseDao;
+//        String cartId="1";
+//        String userId="34";
+//        String productId="PA1";
+//        String merchantId="m1";
+//        double totalAmount=2000;
+//        int  qty=2;
+//        CartRoomEntity sampleEntity=new CartRoomEntity();
+//
+//        PopulateDbAsync(CartRoomDataBase cartRoomDataBase){
+//            cartRoomDataBaseDao=cartRoomDataBase.cartRoomDataBaseDao();
+//        }
+//
+//        @Override
+//        protected Void doInBackground(CartRoomEntity... cartRoomEntities) {
+////            cartRoomDataBaseDao.deleteAll();
+//           // sampleEntity.setCartId(cartId);
+//            //sampleEntity.setMerchantId(merchantId);
+//            sampleEntity.setProductId(productId);
+//            sampleEntity.setQty(qty);
+//            //sampleEntity.setUserId(userId);
+//            sampleEntity.setTotalAmount(totalAmount);
+//  //          cartRoomDataBaseDao.insert(sampleEntity);
+//            return null;
+//        }
+//    }
 }

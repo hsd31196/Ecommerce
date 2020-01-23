@@ -5,8 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.ecommerce.Url;
-
 @Entity
 public class CartRoomEntity {
     @NonNull
@@ -14,7 +12,7 @@ public class CartRoomEntity {
     private  String productId;
     // private String cartId;
     private String productName;
-   // private String merchantId;
+    private String merchantId;
     private String imageUrl;
     private double totalAmount;
     private int  qty;
@@ -43,14 +41,14 @@ public class CartRoomEntity {
     public void setProductId(String productId) {
         this.productId = productId;
     }
-//
-//    public String getMerchantId() {
-//        return merchantId;
-//    }
-//
-//    public void setMerchantId(String merchantId) {
-//        this.merchantId = merchantId;
-//    }
+
+    public String getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
+    }
 
     public String getImageUrl() {
         return imageUrl;

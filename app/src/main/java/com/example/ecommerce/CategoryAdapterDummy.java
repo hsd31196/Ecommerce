@@ -46,8 +46,8 @@ public class CategoryAdapterDummy extends RecyclerView.Adapter<CategoryAdapterDu
     public void onBindViewHolder(@NonNull Viewholder holder, final int position) {
         Products object=listProducts.get(position);
         holder.prodName.setText(object.getProductName());
-        holder.prodPrice.setText(Integer.toString(object.getPrice()));
-        holder.ratingBar.setRating(object.getRating());
+        holder.prodPrice.setText(Double.toString(object.getPrice()));
+        holder.ratingBar.setRating((float) object.getRating());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +83,7 @@ public class CategoryAdapterDummy extends RecyclerView.Adapter<CategoryAdapterDu
 
         }
     }
+
     public interface CustomInterface
     {
         void onClick(Products products);

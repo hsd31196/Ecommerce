@@ -8,22 +8,68 @@ import java.util.List;
 
 public class Products implements Serializable {
 
+    @SerializedName( "productId")
+    private String productId;
 
-    @SerializedName("product_name")
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public String getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public int getProductStock() {
+        return productStock;
+    }
+
+    public void setProductStock(int productStock) {
+        this.productStock = productStock;
+    }
+
+    public Double getDiscountedPrice() {
+        return discountedPrice;
+    }
+
+    public void setDiscountedPrice(double discountedPrice) {
+        this.discountedPrice = discountedPrice;
+    }
+
+    @SerializedName("productName")
     private String productName;
-    @SerializedName("price")
-    private int price;
-    @SerializedName("image_url")
+    @SerializedName("mrp")
+    private double price;
+    @SerializedName("imageURL")
     private List<String> imgurls;
-    @SerializedName("rating")
-    private int rating;
+    @SerializedName("productRating")
+    private double rating;
     @SerializedName("description")
     private String description;
 
     @SerializedName("specification")
     private String  specification;
-    @SerializedName("reviews")
+    @SerializedName("review")
     private String reviews;
+
+    @SerializedName("merchantId")
+    private String merchantId;
+
+    @SerializedName("productStock")
+    private int productStock;
+
+    @SerializedName("merchantPrice")
+    private double discountedPrice;
+
+
+
 
 
 
@@ -45,7 +91,7 @@ public class Products implements Serializable {
         this.imgurls = imgurls;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
@@ -81,7 +127,7 @@ public class Products implements Serializable {
         return productName;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

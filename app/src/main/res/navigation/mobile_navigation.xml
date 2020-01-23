@@ -19,30 +19,30 @@
     <fragment
         android:id="@+id/nav_category1"
         android:name="com.example.ecommerce.ui.category1.Category1Fragment"
-        android:label="Category1"
+        android:label="Cricket"
         tools:layout="@layout/fragment_category1" />
     <fragment
         android:id="@+id/nav_category2"
         android:name="com.example.ecommerce.ui.category2.Category2Fragment"
-        android:label="Category2"
+        android:label="Badminton"
         tools:layout="@layout/fragment_category2" />
 
     <fragment
         android:id="@+id/nav_category3"
         android:name="com.example.ecommerce.ui.category3.Category3Fragment"
-        android:label="Category3"
+        android:label="Tennis"
         tools:layout="@layout/fragment_category3" />
 
     <fragment
         android:id="@+id/nav_category4"
         android:name="com.example.ecommerce.ui.category4.Category4Fragment"
-        android:label="Category4"
+        android:label="Table Tennis"
         tools:layout="@layout/fragment_category4" />
 
     <fragment
         android:id="@+id/nav_category5"
         android:name="com.example.ecommerce.ui.category5.Category5Fragment"
-        android:label="Category5"
+        android:label="FootBall"
         tools:layout="@layout/fragment_category5" />
 
 

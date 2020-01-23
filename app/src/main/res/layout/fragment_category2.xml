@@ -4,20 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/category2text">
+        android:id="@+id/noInternet"
+        android:visibility="gone">
 
-    </TextView>
+    </ImageView>
 
-
-    <Button
-        android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_height="wrap_content"
-        android:text="Add to cart"
-        android:id="@+id/addtocartbutton">
+        android:layout_width="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
 
-    </Button>
+
 </LinearLayout>

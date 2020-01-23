@@ -5,6 +5,8 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import java.util.List;
 import com.example.ecommerce.entity.CartRoomEntity;
 import com.example.ecommerce.repository.CartRepository;
@@ -29,7 +31,18 @@ private LiveData<List<CartRoomEntity>> allItems;
     }
 
     public void update(String id){
+        System.out.println("in the view model");
         cartRepository.update(id);
+    }
+
+    public void updateDecrement(String id)
+    {
+        cartRepository.updateDecrement(id);
+    }
+
+    public void delById(String  id)
+    {
+        cartRepository.delById(id);
     }
 
 

@@ -56,11 +56,51 @@ public class CartRepository {
         new updateAsyncTask(cartRoomDataBaseDao).execute(id);
     }
 
+    public void updateDecrement(String  id)
+    {
+        new updateDecrementAsyncTask(cartRoomDataBaseDao).execute(id);
+    }
+    public void delById(String  id)
+    {
+        new delAsyncTask(cartRoomDataBaseDao).execute(id);
+    }
+
+    private class delAsyncTask  extends AsyncTask<String,Void,Void> {
+
+        private CartRoomDataBaseDao myCartDao;
+        public delAsyncTask(CartRoomDataBaseDao cartRoomDataBaseDao) {
+            myCartDao=cartRoomDataBaseDao;
+        }
+
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            myCartDao.deleteById(strings[0]);
+            return null;
+        }
+    }
+
+    private class updateDecrementAsyncTask  extends AsyncTask<String,Void,Void> {
+
+        private CartRoomDataBaseDao myCartDao;
+        public updateDecrementAsyncTask(CartRoomDataBaseDao cartRoomDataBaseDao) {
+            myCartDao=cartRoomDataBaseDao;
+        }
+
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            myCartDao.updateDecrement(strings[0]);
+            return null;
+        }
+    }
+
 
     private class updateAsyncTask  extends AsyncTask<String,Void,Void> {
 
         private CartRoomDataBaseDao myCartDao;
         public updateAsyncTask(CartRoomDataBaseDao cartRoomDataBaseDao) {
+            System.out.println("going to call dao");
             myCartDao=cartRoomDataBaseDao;
         }
 
@@ -68,6 +108,7 @@ public class CartRepository {
         @Override
         protected Void doInBackground(String... strings) {
             myCartDao.update(strings[0]);
+            System.out.println(strings[0]);
             return null;
         }
     }
