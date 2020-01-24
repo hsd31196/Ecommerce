@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,8 @@ import com.example.ecommerce.OrderHistory;
 import com.example.ecommerce.R;
 import com.example.ecommerce.RegistrationActivity;
 import com.example.ecommerce.SecondActivity;
+import com.example.ecommerce.TokenClass;
+import com.example.ecommerce.viewmodel.CartViewModel;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -49,6 +52,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,32 +64,33 @@ import retrofit2.Response;
 
 public class AccountFragment extends Fragment  implements View.OnClickListener {
 
-
+CartViewModel cartViewModel;
     SignInButton sign;
     int RC_SIGN_IN=0;
     GoogleSignInClient mGoogleSignInClient;
     APIInterface apiInterface;
-    Call<ResponseBody> call;
+    Call<TokenClass> call;
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private boolean saveLogin;
     private String username,pass;
-    List<Object> token;
+    Object token;
     private AccountViewModel accountViewModel;
 
 //    App app=new App();
 //    SharedPreferences loginPreferences=app.getsharedPreferences();
 
-     SharedPreferences loginPreferences;
-  SharedPreferences.Editor loginPrefsEditor;
+  public    SharedPreferences loginPreferences;
+  public SharedPreferences.Editor loginPrefsEditor;
 
     View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        loginPreferences = getContext().getSharedPreferences("loginPrefs",Context.MODE_PRIVATE );
+        loginPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         loginPrefsEditor = loginPreferences.edit();
+        cartViewModel= ViewModelProviders.of(this).get(CartViewModel.class);
 
 
         if(loginPreferences.getBoolean("isLoggedIn",false))
@@ -94,6 +99,7 @@ public class AccountFragment extends Fragment  implements View.OnClickListener {
             root = inflater.inflate(R.layout.activity_profile, container, false);
             ImageView imageView=(ImageView) root.findViewById(R.id.profilepic);
             TextView username=(TextView) root.findViewById(R.id.personname);
+            username.setText(loginPreferences.getString("username","username"));
             Button order_history=(Button) root.findViewById(R.id.orderhistory);
             Button change_cred=(Button) root.findViewById(R.id.changepassword);
             Button update_address=(Button) root.findViewById(R.id.changedelivery);
@@ -136,7 +142,7 @@ public class AccountFragment extends Fragment  implements View.OnClickListener {
                 }
             });
 
-            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            final GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                     .requestEmail()
                     .build();
 
@@ -212,24 +218,39 @@ public class AccountFragment extends Fragment  implements View.OnClickListener {
                         apiInterface = App.getRetrofit().create(APIInterface.class);
                         LoginCheck loginCheck = new LoginCheck(username, pass);
                         call = apiInterface.login(loginCheck);
-                        call.enqueue(new Callback<ResponseBody>() {
+                        call.enqueue(new Callback<TokenClass>() {
                             @Override
-                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                              //  token = (List<Object>) response.body();
-                               //
-                                // System.out.println("rtilewbhd   "+token);
-                                loginPrefsEditor.putBoolean("isLoggedIn", true);
-                                loginPrefsEditor.commit();
-                                System.out.println(loginPreferences.getBoolean("isLoggedIn",false));
-                                Intent i=new Intent(getContext(),NavigationHome.class);
-                                startActivity(i);
-//                            loginPreferences.getString(token.get(0).toString(),""); // shared preferences to store access tokens should be here
-//                            loginPrefsEditor.putString();
-                                Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
+                            public void onResponse(Call<TokenClass> call, Response<TokenClass> response) {
+                                //token = (Object) response.body();
+                                Gson gson=new Gson();
+                                //TokenClass tokenClass=gson.fromJson(response.body(),TokenClass.class);
+                                System.out.println("hugjgu  "+response.code());
+                                if(response.code()==200)
+                                {
+                                    System.out.println("rtilewbhd   "+response.body().getAccessToken());
+                                    System.out.println(response.body().getTokenType());
+                                    loginPrefsEditor.putBoolean("isLoggedIn", true);
+                                    loginPrefsEditor.putString("username",username);
+                                    loginPrefsEditor.putString("accessToken",response.body().getAccessToken());
+                                    loginPrefsEditor.putString("tokenType",response.body().getTokenType());
+                                    loginPrefsEditor.commit();
+                                    System.out.println(loginPreferences.getBoolean("isLoggedIn",false));
+                                    Intent i=new Intent(getContext(),NavigationHome.class);
+                                    startActivity(i);
+                                    getActivity().finish();
+                                    Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
+
+                                }
+                                else
+                                {
+                                    Toast.makeText(getContext(),"Login Failed",Toast.LENGTH_LONG).show();
+                                }
+
+//
                             }
 
                             @Override
-                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            public void onFailure(Call<TokenClass> call, Throwable t) {
                                 Toast.makeText(getContext(), "Login failure", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -249,10 +270,15 @@ public class AccountFragment extends Fragment  implements View.OnClickListener {
                 }
             });
 
-           // return  root;
         }
 
         return root;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+       // getActivity().finish();
     }
 
     private void signIn() {
@@ -354,8 +380,10 @@ public class AccountFragment extends Fragment  implements View.OnClickListener {
             case R.id.logout:
                 loginPrefsEditor.putBoolean("isLoggedIn",false);
                 loginPrefsEditor.commit();
+                cartViewModel.delete();
                 Intent i3=new Intent(getContext(), NavigationHome.class);
                 startActivity(i3);
+                getActivity().finish();
                 break;
 
 

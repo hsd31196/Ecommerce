@@ -134,9 +134,9 @@ public class Category2Fragment extends Fragment implements Callback<List<Product
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.search_view:
-                search(item);
-                return true;
+           // case R.id.search_view:
+             //   search(item);
+               // return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

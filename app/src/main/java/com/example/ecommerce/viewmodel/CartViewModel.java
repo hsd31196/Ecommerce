@@ -45,6 +45,10 @@ private LiveData<List<CartRoomEntity>> allItems;
         cartRepository.delById(id);
     }
 
+    public void delete(){
+        cartRepository.delete();
+    }
+
 
 
 }

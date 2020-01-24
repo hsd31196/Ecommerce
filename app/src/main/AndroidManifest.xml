@@ -12,15 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderHistory"></activity>
+        <activity android:name=".searchActivity"></activity>
+        <activity android:name=".OrderHistory" />
         <activity android:name=".CheckOut" />
-        <activity android:name=".OrderDetail"/>
+        <activity android:name=".OrderDetail" />
         <activity android:name=".AddressUpdate" />
         <activity android:name=".ProductDetail" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".cart.cart" />
         <activity
             android:name=".NavigationHome"

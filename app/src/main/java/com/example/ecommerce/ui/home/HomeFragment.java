@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment implements Callback<List<Products>>, 
     @Override
     public void onClick(Products products) {
         Intent i=new Intent(getContext(), ProductDetail.class);
+        i.putExtra("product",products);
         startActivity(i);
     }
 }

@@ -27,6 +27,48 @@
       android:text="Proceed to check out"
       app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
+
+  <androidx.constraintlayout.widget.Guideline
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+    app:layout_constraintGuide_percent="0.5"
+    android:orientation="horizontal"
+    android:id="@+id/guideline2">
+
+  </androidx.constraintlayout.widget.Guideline>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toTopOf="@id/guideline2"
+      app:layout_constraintStart_toStartOf="parent">
+
+    <TextView
+        android:id="@+id/textforEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:text="Shopping Cart is Empty"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="31dp" />
+
+
+  </LinearLayout>
+  <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/homeButton"
+      android:text="Continue Shopping"
+      android:visibility="gone"
+      app:layout_constraintBottom_toTopOf="@id/guideline"
+      >
+
+  </Button>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

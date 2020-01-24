@@ -151,10 +151,10 @@ public class LoginActivity extends AppCompatActivity {
 
                     apiInterface=App.getRetrofit().create(APIInterface.class);
                     LoginCheck loginCheck=new LoginCheck(username,pass);
-                    Call<ResponseBody> call=apiInterface.login(loginCheck);
-                    call.enqueue(new Callback<ResponseBody>() {
+                    Call<TokenClass> call=apiInterface.login(loginCheck);
+                    call.enqueue(new Callback<TokenClass>() {
                         @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        public void onResponse(Call<TokenClass> call, Response<TokenClass> response) {
                             token= (List<Object>) response.body();
 //                            loginPreferences.getString(token.get(0).toString(),""); // shared preferences to store access tokens should be here
 //                            loginPrefsEditor.putString();
@@ -162,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        public void onFailure(Call<TokenClass> call, Throwable t) {
                             Toast.makeText(LoginActivity.this,"Registration Success",Toast.LENGTH_SHORT).show();
                         }
                     });

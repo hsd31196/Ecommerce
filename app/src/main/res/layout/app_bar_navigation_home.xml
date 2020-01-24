@@ -20,73 +20,9 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="vertical"-->
-<!--                android:gravity="center|right">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:gravity="center">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="60dp"-->
-<!--                        android:layout_weight="8"-->
-<!--                        android:layout_margin="5dp"-->
-<!--                        android:text="@string/app_name"-->
-<!--                        android:gravity="center"-->
-<!--                        android:textSize="20dp"-->
-<!--                        android:textColor="@color/colourOrange">-->
-<!--                    </TextView>-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:gravity="center|right">-->
-<!--                    <EditText-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:layout_marginTop="30dp"-->
-<!--                        android:layout_margin="5dp"-->
-<!--                        android:id="@+id/searchTextView"-->
-<!--                        android:hint="Search Here...."-->
-<!--                        android:drawableLeft="@drawable/ic_search"-->
-<!--                        android:background="@drawable/search_box"-->
-<!--                        android:ems="20"-->
-<!--                        android:layout_gravity="center">-->
-
-<!--                    </EditText>-->
-
-<!--                </LinearLayout>-->
-
-<!--            </LinearLayout>-->
 
         </androidx.appcompat.widget.Toolbar>
-        <RelativeLayout
-            android:id="@+id/search_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:background="@color/colourBlack"
-            android:padding="@dimen/activity_horizontal_margin">
 
-<!--            <androidx.appcompat.widget.SearchView-->
-<!--                android:id="@+id/search_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/search_box"-->
-<!--                app:queryHint="Search Here..">-->
-<!--                -->
-<!--            </androidx.appcompat.widget.SearchView>-->
-
-        </RelativeLayout>
 
 
     </com.google.android.material.appbar.AppBarLayout>

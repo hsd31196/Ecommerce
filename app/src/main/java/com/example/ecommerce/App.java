@@ -1,7 +1,9 @@
 package com.example.ecommerce;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
@@ -20,11 +22,16 @@ public class App extends Application {
         return retrofit;
     }
 
-     SharedPreferences sharedPreferences;
-    public  SharedPreferences getsharedPreferences()
-    {
-        sharedPreferences=getSharedPreferences("loginPrefs",MODE_PRIVATE);
-        return sharedPreferences;
+    public static void setDefaults(String key, String value, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+    public static String getDefaults(String key, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(key, null);
     }
 }
 

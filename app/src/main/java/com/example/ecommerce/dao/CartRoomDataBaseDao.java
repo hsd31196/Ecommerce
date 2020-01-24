@@ -32,4 +32,8 @@ public interface CartRoomDataBaseDao {
 
     @Query("update CartRoomEntity set qty=qty-1 where productId=:id")
     void updateDecrement(String id);
+
+
+    @Query("delete from CartRoomEntity")
+    void delete();
 }

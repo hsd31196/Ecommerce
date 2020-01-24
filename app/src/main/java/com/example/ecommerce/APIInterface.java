@@ -23,6 +23,6 @@ public interface APIInterface {
 //    Call<RegistrationDTO> postRegistrationDetails();
 
 
-    @POST("login/auth/login")
-    Call<ResponseBody> login(@Body LoginCheck loginCheck);
+    @POST("login/auth/signin")
+    Call<TokenClass> login(@Body LoginCheck loginCheck);
 }

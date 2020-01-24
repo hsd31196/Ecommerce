@@ -2,12 +2,14 @@ package com.example.ecommerce;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.recyclerview.widget.GridLayoutManager;
         import androidx.recyclerview.widget.RecyclerView;
 
         import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.util.Log;
         import android.widget.Toast;
 
@@ -26,17 +28,18 @@ public class OrderHistory extends AppCompatActivity implements OrderHistoryAdapt
     TempOrders ordersList;
     private OrderHistoryAdapter orderHistoryAdapter;
     private RecyclerView recyclerView;
-
+SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history);
+        preferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         Retrofit retrofit=App.getRetrofit();
         FetchOrderHistory fetchOrderHistory = retrofit.create(FetchOrderHistory.class);
 
         //call API
-        Call<TempOrders> call = fetchOrderHistory.getData();
+        Call<TempOrders> call = fetchOrderHistory.getData("Bearer "+preferences.getString("accessToken",""));
         call.enqueue(new Callback<TempOrders>() {
 
             @Override

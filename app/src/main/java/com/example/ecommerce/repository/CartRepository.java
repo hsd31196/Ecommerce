@@ -65,6 +65,24 @@ public class CartRepository {
         new delAsyncTask(cartRoomDataBaseDao).execute(id);
     }
 
+    public void delete(){
+        new deleteAsyncTask(cartRoomDataBaseDao).execute();
+    }
+    private class deleteAsyncTask  extends AsyncTask<String,Void,Void> {
+
+        private CartRoomDataBaseDao myCartDao;
+        public deleteAsyncTask(CartRoomDataBaseDao cartRoomDataBaseDao) {
+            myCartDao=cartRoomDataBaseDao;
+        }
+
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            myCartDao.delete();
+            return null;
+        }
+    }
+
     private class delAsyncTask  extends AsyncTask<String,Void,Void> {
 
         private CartRoomDataBaseDao myCartDao;

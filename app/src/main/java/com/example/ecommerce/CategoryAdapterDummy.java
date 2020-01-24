@@ -62,7 +62,9 @@ public class CategoryAdapterDummy extends RecyclerView.Adapter<CategoryAdapterDu
 
     @Override
     public int getItemCount() {
+
         return listProducts.size();
+
     }
 
 
