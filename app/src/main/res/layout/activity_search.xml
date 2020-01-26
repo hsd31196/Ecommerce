@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".searchActivity"
+    tools:context=".search.searchActivity"
     android:orientation="vertical">
 
 
@@ -16,6 +16,21 @@
         android:iconifiedByDefault="false"
         android:layout_alignParentTop="true"
         />
+    <TextView
+        android:text="Sort By"
+        android:layout_gravity="right"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></TextView>
+
+    <Spinner
+        android:id="@+id/sortby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:prompt="@string/spinnertitle"
+        android:layout_gravity="right">
+    </Spinner>
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -14,7 +14,7 @@ import com.example.ecommerce.dao.CartRoomDataBaseDao;
 import com.example.ecommerce.entity.CartRoomEntity;
 
 
-@Database(entities = {CartRoomEntity.class},version = 4,exportSchema = false)
+@Database(entities = {CartRoomEntity.class},version = 5,exportSchema = false)
 public abstract  class CartRoomDataBase extends RoomDatabase {
 
     private static CartRoomDataBase instance;

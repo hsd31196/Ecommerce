@@ -1,25 +1,19 @@
 package com.example.ecommerce.cart;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.List;
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ecommerce.CategoryAdapterDummy;
 import com.example.ecommerce.R;
 import com.example.ecommerce.entity.CartRoomEntity;
-import com.example.ecommerce.viewmodel.CartViewModel;
 
 public class CartAdapterBeforeLogin extends RecyclerView.Adapter<CartAdapterBeforeLogin.Viewholder> {
 private List<CartRoomEntity> listCartItems;
@@ -62,6 +56,7 @@ public CartAdapterBeforeLogin(CustomInterface customInterface)
                 @Override
                 public void onClick(View v) {
                     System.out.println("in the increment");
+                    //CartAdapterAfterLogin.notifyDataSetChanged();
                     //holder.quantity.setText(Integer.toString(current.getQty())+1);
                     customInterface.onClick(current.getProductId());
                 }

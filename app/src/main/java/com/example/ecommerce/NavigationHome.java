@@ -3,6 +3,7 @@ package com.example.ecommerce;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.ecommerce.app.App;
 import com.example.ecommerce.cart.cart;
 
 import android.view.MenuItem;
@@ -14,7 +15,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.ecommerce.ui.category2.Category2Fragment;
+import com.example.ecommerce.search.searchActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -23,8 +24,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import java.util.List;
 import android.view.Menu;
-import android.view.SubMenu;
-import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +36,7 @@ public class NavigationHome extends AppCompatActivity implements Callback<List<S
 SearchView searchView;
  public static   List<String> list;
     NavigationView navigationView;
-Retrofit retrofit=App.getRetrofit();
+Retrofit retrofit= App.getRetrofit();
 ListCategoryInterface listCategory;
 DrawerLayout drawer;
 
@@ -82,7 +81,7 @@ private Menu menu;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.search_view)
         {
-            Intent i=new Intent(getApplicationContext(),searchActivity.class);
+            Intent i=new Intent(getApplicationContext(), searchActivity.class);
             startActivity(i);
             return true;
         }

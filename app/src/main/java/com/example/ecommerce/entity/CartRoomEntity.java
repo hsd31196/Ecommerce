@@ -5,26 +5,35 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity
 public class CartRoomEntity {
     @NonNull
     @PrimaryKey
+    @SerializedName("productId")
     private  String productId;
-    // private String cartId;
+    @SerializedName("userId")
+     private String userId;
+    @SerializedName("productName")
     private String productName;
+    @SerializedName("merchantId")
     private String merchantId;
+    @SerializedName("image")
     private String imageUrl;
+    @SerializedName("price")
     private double totalAmount;
+    @SerializedName("quantity")
     private int  qty;
 
     @NonNull
-//    public String getCartId() {
-//        return cartId;
-//    }
-//
-//    public void setCartId(@NonNull String cartId) {
-//        this.cartId = cartId;
-//    }
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(@NonNull String userId) {
+        this.userId = userId;
+    }
 
     public String getProductName() {
         return productName;
@@ -72,5 +81,17 @@ public class CartRoomEntity {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    @Override
+    public String toString() {
+        return "CartRoomEntity{" +
+                "productId='" + productId + '\'' +
+                ", productName='" + productName + '\'' +
+                ", merchantId='" + merchantId + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", totalAmount=" + totalAmount +
+                ", qty=" + qty +
+                '}';
     }
 }

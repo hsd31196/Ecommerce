@@ -7,28 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ecommerce.App;
-import com.example.ecommerce.CategoryAppInterface;
-import com.example.ecommerce.HomeAdapter;
-import com.example.ecommerce.ProductDetail;
-import com.example.ecommerce.Products;
+import com.example.ecommerce.app.App;
+import com.example.ecommerce.category.CategoryAppInterface;
+import com.example.ecommerce.products.ProductDetail;
+import com.example.ecommerce.products.Products;
 import com.example.ecommerce.R;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
-
-import java.util.concurrent.Callable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +37,7 @@ public class HomeFragment extends Fragment implements Callback<List<Products>>, 
     List<Products> returnedProducts;
 
 
-    int[] carouselImages={R.drawable.corossel_image1,R.drawable.corossel_image2,R.drawable.corossel_image3};
+    int[] carouselImages={R.drawable.caroussel_image1,R.drawable.caroussel_image2,R.drawable.caroussel_image3,R.drawable.caroussel_image4,R.drawable.caroussel_image5};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

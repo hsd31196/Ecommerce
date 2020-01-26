@@ -5,7 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:layout_margin="8dp"
-tools:context=".CheckOut">
+tools:context=".order.CheckOut">
 
 <TextView
     android:id="@+id/deliveryaddress"
@@ -109,7 +109,7 @@ tools:context=".CheckOut">
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="0 /-"
+        android:text="₹ 0 "
         app:layout_constraintTop_toBottomOf="@id/itemstotalvalue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline"

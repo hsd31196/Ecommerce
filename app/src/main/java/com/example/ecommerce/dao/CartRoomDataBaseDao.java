@@ -4,6 +4,7 @@ package com.example.ecommerce.dao;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.ecommerce.entity.CartRoomEntity;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface CartRoomDataBaseDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(CartRoomEntity cartRoomDataBase);
 
     @Query("delete from CartRoomEntity where productId=:id")

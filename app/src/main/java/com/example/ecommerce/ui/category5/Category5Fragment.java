@@ -7,25 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ecommerce.App;
-import com.example.ecommerce.CategoryAdapterDummy;
-import com.example.ecommerce.CategoryAppInterface;
-import com.example.ecommerce.NavigationHome;
-import com.example.ecommerce.ProductDetail;
-import com.example.ecommerce.Products;
+import com.example.ecommerce.app.App;
+import com.example.ecommerce.category.CategoryAdapterDummy;
+import com.example.ecommerce.category.CategoryAppInterface;
+import com.example.ecommerce.products.ProductDetail;
+import com.example.ecommerce.products.Products;
 import com.example.ecommerce.R;
-import com.example.ecommerce.ui.account.AccountViewModel;
-import com.example.ecommerce.ui.category1.Category1Fragment;
 
 import java.util.List;
 

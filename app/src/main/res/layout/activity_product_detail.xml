@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:fillViewport="true">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:layout_margin="8dp"
 android:orientation="vertical"
-tools:context=".ProductDetail">
+tools:context=".products.ProductDetail">
+
+
+
 
 <androidx.viewpager.widget.ViewPager
     android:id="@+id/productimages"
@@ -106,10 +124,10 @@ tools:context=".ProductDetail">
 <TextView
     android:id="@+id/Description"
     android:text="Description"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:scrollbars="vertical"></TextView>
+    ></TextView>
 
 <TextView
     android:text="Specification"
@@ -118,11 +136,11 @@ tools:context=".ProductDetail">
     android:layout_height="wrap_content"></TextView>
 <TextView
     android:id="@+id/Specification"
-    android:text="Specification jsjfksejfkhsjefhesfheskfhkefjshfjkshfskdjfhsdkjdhsfjksdhfjkhjskhfjksdhfjkkjsdfhjksdhfkjsfhkjsdhfjshdfjksdhfjksdhkjfsdhkjfhdskjfhsdjsdjahsjdkhasjkdhasjkdhaksjhdjkashdjkashdjkashdjkashdjkashdjkshdjkashdjhasdjha"
+    android:text=""
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     android:gravity="center"
-    android:scrollbars="vertical"></TextView>
+    ></TextView>
 
 <TextView
     android:text="Reviews"
@@ -134,34 +152,50 @@ tools:context=".ProductDetail">
     android:id="@+id/reviews"
     android:text="Reviews"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:gravity="center"
-    android:scrollbars="vertical">
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
 </TextView>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dip"
-    android:layout_weight="1"
-    android:gravity="center|bottom"
-    android:orientation="vertical">
+    <TextView
+        android:text="Select Merchants"
+        android:layout_gravity="left"
+        android:textStyle="bold"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></TextView>
 
-    <Button
-        android:id="@+id/addtocart"
-        android:text="Add to cart"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/selectMerchants"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        >
-
-    </Button>
-
+        android:spinnerMode="dropdown"
+        android:prompt="@string/spinnertitle"
+        android:layout_gravity="left">
+    </Spinner>
 
 </LinearLayout>
 
+</ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearButton"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/addtocart"
+            android:text="Add to cart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            >
+
+        </Button>
 
 
+    </LinearLayout>
 
 </LinearLayout>

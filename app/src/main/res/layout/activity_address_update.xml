@@ -5,9 +5,41 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:layout_margin="8dp"
-tools:context=".AddressUpdate">
+tools:context=".ui.account.AddressUpdate">
 
-<androidx.constraintlayout.widget.Guideline
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/guidelinehorizontal"
+        app:layout_constraintGuide_percent="0.5"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/existingAddress"
+        android:text="Existing Address:"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/guidelinehorizontal"
+        app:layout_constraintBottom_toTopOf="@+id/valueexistingAddress" />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/valueexistingAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/existingAddress"/>
+
+
+
+    <androidx.constraintlayout.widget.Guideline
     android:id="@+id/guideline"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

@@ -49,16 +49,16 @@ xmlns:tools="http://schemas.android.com/tools">
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/guideline"></Button>
 
-<Button
-    android:id="@+id/changepassword"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:padding="24dp"
-    android:text="Update Credentials "
-    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/orderhistory"></Button>
+<!--<Button-->
+<!--    android:id="@+id/changepassword"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:gravity="center"-->
+<!--    android:padding="24dp"-->
+<!--    android:text="Update Credentials "-->
+<!--    android:textAppearance="@style/TextAppearance.AppCompat.Body2"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toBottomOf="@+id/orderhistory"></Button>-->
 
 <Button
     android:id="@+id/changedelivery"
@@ -69,7 +69,7 @@ xmlns:tools="http://schemas.android.com/tools">
     android:text="Update Address "
     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/changepassword">
+    app:layout_constraintTop_toBottomOf="@id/orderhistory">
 
 </Button>
 

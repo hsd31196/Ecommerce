@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cartpage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,7 +12,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:id="@+id/guideline"
-      app:layout_constraintGuide_percent="0.94"
+      app:layout_constraintGuide_percent="0.92"
       android:orientation="horizontal"/>
 
   <androidx.recyclerview.widget.RecyclerView
@@ -62,7 +63,7 @@
       android:id="@+id/homeButton"
       android:text="Continue Shopping"
       android:visibility="gone"
-      app:layout_constraintBottom_toTopOf="@id/guideline"
+      app:layout_constraintTop_toBottomOf="@+id/guideline"
       >
 
   </Button>
