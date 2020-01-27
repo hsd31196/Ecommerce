@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group1"
+        >
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home">
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group2">
+        <item
+            android:id="@+id/nav_shop"
+            android:icon="@drawable/ic_shop"
+            android:title="@string/menu_shop">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_category1"
+                    android:title="@string/categoty1">
+
+                </item>
+                <item
+                    android:title="@string/categoty2"
+                    android:id="@+id/nav_category2">
+                </item>
+                <item
+                    android:title="@string/categoty3"
+                    android:id="@+id/nav_category3">
+                </item><item
+                android:title="@string/categoty4"
+                android:id="@+id/nav_category4">
+            </item><item
+                android:title="@string/categoty5"
+                android:id="@+id/nav_category5">
+            </item>
+            </menu>
+        </item>
+
+
+    </group>
+<group android:checkableBehavior="single"
+    android:id="@+id/group3">
+
+       <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_account"
+            android:title="@string/menu_account" />
+</group>
+
+</menu>

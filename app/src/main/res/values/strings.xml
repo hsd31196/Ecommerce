@@ -1,3 +1,43 @@
-<resources>
-    <string name="app_name">Ecommerce</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Ecommerce Store</string>
+    <string name="title_activity_navigation_home" tools:ignore="ExtraTranslation">NavigationHome</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <!--    <string name="action_settings">Settings</string>-->
+    <string name="nav_header_cart">Cart</string>
+
+    <string name="menu_home">Team8</string>
+    <string name="spinnertitle">Sort By</string>
+    <string name="menu_shop">Shop By Category</string>
+    <string name="menu_account">Account</string>
+    <string name="action_cart">Cart</string>
+    <string name="categoty1">Category1</string>
+    <string name="categoty2">Category2</string>
+    <string name="categoty3">Category3</string>
+    <string name="categoty4">Category4</string>
+    <string name="categoty5">Category5</string>
+
+    <string name="username">Email</string>
+    <string name="password">Password</string>
+    <string name="rememberMe">Remember Me</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="newUser">Sign Up</string>
+    <string name="signin">Sign In</string>
+    <string name="googleLogin">Sign in with Google</string>
+    <string name="fbLogin">Sign in with Facebook</string>
+    <string name="facebook_app_id">899264077169460</string>
+    <string name="fb_login_protocol_scheme">fb899264077169460</string>
+    <string name="edittext">New User Registration</string>
+    <string name="editfname">Enter First Name</string>
+    <string name="editlname">Enter Last Name</string>
+    <string name="editemail">Enter Email id</string>
+    <string name="editpass">Enter Password</string>
+    <string name="editaddress">Enter your address</string>
+    <string name="editmobile">Enter your mobile number</string>
+    <string name="register">Register</string>
+
+
 </resources>

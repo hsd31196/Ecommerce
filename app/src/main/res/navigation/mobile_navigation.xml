@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.ecommerce.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_shop"
+        android:name="com.example.ecommerce.ui.shopping.ShoppingFragment"
+        android:label="Shopping"
+        tools:layout="@layout/fragment_shopping" />
+    <fragment
+        android:id="@+id/nav_category1"
+        android:name="com.example.ecommerce.ui.category1.Category1Fragment"
+        android:label="Cricket"
+        tools:layout="@layout/fragment_category1" />
+    <fragment
+        android:id="@+id/nav_category2"
+        android:name="com.example.ecommerce.ui.category2.Category2Fragment"
+        android:label="Badminton"
+        tools:layout="@layout/fragment_category2" />
+
+    <fragment
+        android:id="@+id/nav_category3"
+        android:name="com.example.ecommerce.ui.category3.Category3Fragment"
+        android:label="Tennis"
+        tools:layout="@layout/fragment_category3" />
+
+    <fragment
+        android:id="@+id/nav_category4"
+        android:name="com.example.ecommerce.ui.category4.Category4Fragment"
+        android:label="Table Tennis"
+        tools:layout="@layout/fragment_category4" />
+
+    <fragment
+        android:id="@+id/nav_category5"
+        android:name="com.example.ecommerce.ui.category5.Category5Fragment"
+        android:label="FootBall"
+        tools:layout="@layout/fragment_category5" />
+
+
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.example.ecommerce.ui.account.AccountFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_account" />
+
+</navigation>
