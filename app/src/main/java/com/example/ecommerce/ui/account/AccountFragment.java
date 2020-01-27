@@ -107,7 +107,6 @@ CartViewModel cartViewModel;
 
         if(loginPreferences.getBoolean("isLoggedIn",false))
         {
-            addToCart(loginPreferences.getString("username",""));
             // if(value of intent from )
             accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
             root = inflater.inflate(R.layout.activity_profile, container, false);
@@ -167,6 +166,9 @@ CartViewModel cartViewModel;
                     new FacebookCallback<LoginResult>() {
                         @Override
                         public void onSuccess(LoginResult loginResult) {
+
+                            System.out.println("face boook results"+loginResult);
+                            System.out.println();
                             // App code
                             Intent intent = new Intent(getContext(), NavigationHome.class);
                             startActivity(intent);
@@ -242,12 +244,12 @@ CartViewModel cartViewModel;
                                     loginPrefsEditor.putString("accessToken",response.body().getAccessToken());
                                     loginPrefsEditor.putString("tokenType",response.body().getTokenType());
                                     loginPrefsEditor.commit();
-                                    System.out.println(loginPreferences.getString("accessToken",""));
-                                    //else {
-                                       Intent i = new Intent(getContext(), NavigationHome.class);
+
+                                    addToCart(loginPreferences.getString("username",""));
+
+                                    Intent i = new Intent(getContext(), NavigationHome.class);
                                        startActivity(i);
-                                       //getActivity().finish();
-                                   //}
+
 
 //                                    if(getArguments().getString("place")!=null) {
 //                                        String msg = getArguments().getString("place");
@@ -359,11 +361,21 @@ CartViewModel cartViewModel;
                     call.enqueue(new Callback<TokenClass>() {
                         @Override
                         public void onResponse(Call<TokenClass> call, Response<TokenClass> response) {
-                            loginPrefsEditor.putBoolean("isLoggedIn", true);
-                            loginPrefsEditor.putString("username",email);
-                            loginPrefsEditor.putString("accessToken",response.body().getAccessToken());
-                            loginPrefsEditor.putString("tokenType",response.body().getTokenType());
-                            loginPrefsEditor.commit();
+
+                            if(response.code()==401)
+                            {
+                                Toast.makeText(getContext(),"User already existing with this Mail Address",Toast.LENGTH_SHORT).show();
+                                mGoogleSignInClient.signOut();
+                            }
+                            else {
+                                loginPrefsEditor.putBoolean("isLoggedIn", true);
+                                loginPrefsEditor.putString("username", email);
+                                loginPrefsEditor.putString("accessToken", response.body().getAccessToken());
+                                loginPrefsEditor.putString("tokenType", response.body().getTokenType());
+                                loginPrefsEditor.commit();
+                                addToCart(loginPreferences.getString("username",""));
+
+                            }
                         }
 
                         @Override
@@ -371,6 +383,11 @@ CartViewModel cartViewModel;
 
                         }
                     });
+                }
+                else
+                {
+                    Toast.makeText(getContext(),"Email Id already existing",Toast.LENGTH_SHORT).show();
+
                 }
                 //not registered
 

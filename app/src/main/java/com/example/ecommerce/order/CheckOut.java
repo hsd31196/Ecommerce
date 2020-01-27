@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ecommerce.NavigationHome;
 import com.example.ecommerce.address.UserAddress;
 import com.example.ecommerce.entity.CartRoomEntity;
 import com.example.ecommerce.login.APIInterface;
@@ -83,7 +84,7 @@ TextView addresssValue;
 
                 int count=0;
                 list=response.body();
-                if(list.size()!=0) {
+                if(list!=null && list.size()!=0) {
                      count = list.size();
                 }
                 for(int i=0;i<count;i++)
@@ -143,13 +144,14 @@ TextView addresssValue;
                 else {
 
                     System.out.println("Address value....." + addresssValue.getText());
-                    Random r = new Random();
-                    call = cartAPIInterface.buyNow("Bearer " + preferences.getString("accessToken", ""), preferences.getString("username", ""), r.nextInt(1000));
+                    call = cartAPIInterface.buyNow("Bearer " + preferences.getString("accessToken", ""), preferences.getString("username", ""));
                     call.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             System.out.println(response.code());
                             Toast.makeText(getApplicationContext(), "Order Placed successfully ", Toast.LENGTH_LONG).show();
+                            Intent i=new Intent(getApplicationContext(), NavigationHome.class);
+                            startActivity(i);
 
                         }
 

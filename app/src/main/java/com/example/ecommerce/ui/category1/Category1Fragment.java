@@ -32,7 +32,7 @@ import retrofit2.Retrofit;
 
 public class Category1Fragment  extends Fragment  implements Callback<List<Products>>, CategoryAdapterDummy.CustomInterface {
 
-    private Category1ViewModel category1ViewModel;
+    //private Category1ViewModel category1ViewModel;
 
     Retrofit retrofit= App.getRetrofit();
         CategoryAppInterface appInterface;
@@ -53,7 +53,7 @@ public class Category1Fragment  extends Fragment  implements Callback<List<Produ
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        category1ViewModel = ViewModelProviders.of(this).get(Category1ViewModel.class);
+        //category1ViewModel = ViewModelProviders.of(this).get(Category1ViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_category1, container, false);
         recyclerView=root.findViewById(R.id.recyclerView);

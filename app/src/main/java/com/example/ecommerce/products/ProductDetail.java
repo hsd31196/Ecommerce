@@ -18,6 +18,7 @@ package com.example.ecommerce.products;
         import android.widget.TextView;
         import android.widget.Toast;
 
+        import com.example.ecommerce.NavigationHome;
         import com.example.ecommerce.app.App;
         import com.example.ecommerce.R;
         import com.example.ecommerce.cart.CartAPIInterface;
@@ -238,6 +239,7 @@ Spinner spinner;
                     {
                         Intent i=new Intent(getApplicationContext(),cart.class);
                         startActivity(i);
+                        finish();
                     }
 
 
@@ -253,4 +255,6 @@ Spinner spinner;
         onBackPressed();
         return true;
     }
+
+
 }

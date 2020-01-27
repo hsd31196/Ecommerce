@@ -41,7 +41,6 @@ import retrofit2.Retrofit;
 public class Category2Fragment extends Fragment implements Callback<List<Products>>, CategoryAdapterDummy.CustomInterface {
 
 
-    private Category2ViewModel category2ViewModel;
     Retrofit retrofit= App.getRetrofit();
     CategoryAppInterface appInterface=retrofit.create(CategoryAppInterface.class);
     Call<List<Products>> call;
@@ -66,8 +65,7 @@ public class Category2Fragment extends Fragment implements Callback<List<Product
         call=appInterface.getProducts(NavigationHome.list.get(1));
         call.enqueue(this);
 
-        category2ViewModel =
-                ViewModelProviders.of(this).get(Category2ViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_category2, container, false);
         recyclerView=root.findViewById(R.id.recyclerView);
         imageView=root.findViewById(R.id.noInternet);

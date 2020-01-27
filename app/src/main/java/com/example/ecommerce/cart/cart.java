@@ -89,9 +89,21 @@ Call<ResponseBody> callUpdate;
                 @Override
                 public void onClick(View v) {
                     if (preferences.getBoolean("isLoggedIn", false)) {
-                        System.out.println("logion status .........."+preferences.getBoolean("isLoggedIn",false));
-                        Intent i = new Intent(getApplicationContext(), CheckOut.class);
-                        startActivity(i);
+
+                        if(cartItems.size()==0)
+                        {
+                            recyclerView.setVisibility(View.GONE);
+                            cartEmpty.setVisibility(View.VISIBLE);
+                            homeButton.setVisibility(View.VISIBLE);
+                            checkoutButton.setVisibility(View.GONE);
+                        }
+                        else {
+
+                            System.out.println("logion status .........." + preferences.getBoolean("isLoggedIn", false));
+                            Intent i = new Intent(getApplicationContext(), CheckOut.class);
+                            startActivity(i);
+
+                        }
                     } else {
                         System.out.println("Login status...........");
                          AccountFragment fragmentS1 = new AccountFragment();
@@ -186,6 +198,7 @@ public void generateList(List<CartRoomEntity> cartRoomEntities)
 
         if(cartRoomEntities==null|| cartRoomEntities.size()==0)
         {
+           // System.out.println(cartRoomEntities.size());
             recyclerView.setVisibility(View.GONE);
             cartEmpty.setVisibility(View.VISIBLE);
             homeButton.setVisibility(View.VISIBLE);
@@ -193,7 +206,7 @@ public void generateList(List<CartRoomEntity> cartRoomEntities)
         }
         else {
             cartItems = cartRoomEntities;
-            System.out.println("username    "+preferences.getString("username","username"));
+            System.out.println(cartRoomEntities.size());
             checkoutButton.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.VISIBLE);
             cartAdapterAfterLogin=new CartAdapterAfterLogin(cart.this,cartItems);
@@ -266,7 +279,11 @@ public void generateList(List<CartRoomEntity> cartRoomEntities)
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 CartRoomEntity cartRoomEntity=cartItems.get(position);
                 cartItems.remove(position);
+//                if(cartItems.size()==0) {
+//                    generateListCart(null);
+//                }
                 cartAdapterAfterLogin.notifyDataSetChanged();
+
             }
 
             @Override
@@ -299,5 +316,12 @@ public void generateList(List<CartRoomEntity> cartRoomEntities)
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), NavigationHome.class));
+        finish();
     }
 }

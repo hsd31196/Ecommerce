@@ -32,7 +32,7 @@ import retrofit2.Retrofit;
 public class Category5Fragment extends Fragment implements Callback<List<Products>>,CategoryAdapterDummy.CustomInterface {
 
 
-    private Category5ViewModel category5ViewModel;
+   // private Category5ViewModel category5ViewModel;
 
     Retrofit retrofit= App.getRetrofit();
     CategoryAppInterface appInterface;
@@ -52,8 +52,8 @@ public class Category5Fragment extends Fragment implements Callback<List<Product
         Call<List<Products>> call=appInterface.getProducts("FootBall"/*NavigationHome.list.get(4)*/);
         call.enqueue(this);
         System.out.println("======="+call.request());
-        category5ViewModel =
-                ViewModelProviders.of(this).get(Category5ViewModel.class);
+//        category5ViewModel =
+//                ViewModelProviders.of(this).get(Category5ViewModel.class);
         View root = inflater.inflate(R.layout.fragment_category5, container, false);
         recyclerView=root.findViewById(R.id.recyclerView);
         imageView=root.findViewById(R.id.noInternet);

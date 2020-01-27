@@ -26,7 +26,7 @@
         <activity android:name=".cart.cart" />
         <activity
             android:name=".NavigationHome"
-            android:label="@string/title_activity_navigation_home"
+            android:label="Team8"
             android:theme="@style/AppTheme.NoActionBar">
 
             <!-- </activity> -->

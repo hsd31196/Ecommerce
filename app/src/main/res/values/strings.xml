@@ -24,7 +24,7 @@
     <string name="password">Password</string>
     <string name="rememberMe">Remember Me</string>
     <string name="forgot">Forgot Password</string>
-    <string name="newUser">New User</string>
+    <string name="newUser">Sign Up</string>
     <string name="signin">Sign In</string>
     <string name="googleLogin">Sign in with Google</string>
     <string name="fbLogin">Sign in with Facebook</string>

@@ -37,7 +37,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     public void onBindViewHolder(@NonNull CustomViewHolder holder, final int position) {
         final TempOrders object=ordersList.get(position);
         holder.order_title.setText(object.getProductName());
-        holder.order_price.setText(String.valueOf(object.getPrice()));
+        holder.order_price.setText("₹ "+String.valueOf(object.getPrice()));
         holder.order_date.setText(object.getOrderDate().toString());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

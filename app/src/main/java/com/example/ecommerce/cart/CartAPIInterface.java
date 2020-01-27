@@ -40,8 +40,8 @@ public interface CartAPIInterface {
     Call<ResponseBody> deleteCartByUser(@Header("Authorization") String token,@Path("userId") String username);
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    @POST("order/orderService/checkout/{userId}/{orderId}")
-    Call<ResponseBody> buyNow(@Header("Authorization") String token,@Path("userId") String username,@Path("orderId") int orderId);
+    @POST("order/orderService/checkout/{userId}")
+    Call<ResponseBody> buyNow(@Header("Authorization") String token,@Path("userId") String username);
 
 
 

@@ -86,7 +86,7 @@ public class searchActivity extends AppCompatActivity implements CategoryAdapter
     }
 
     private void generateDataList(List<Products> productsList) {
-        System.out.println("in the generated list");
+        //System.out.println("in the generated list");
         if(productsList==null)
         {
             recyclerView.setVisibility(View.GONE);
@@ -110,12 +110,12 @@ public class searchActivity extends AppCompatActivity implements CategoryAdapter
             @Override
             public boolean onQueryTextSubmit(String query) {
                 call = appInterface.getSearchedProduts(query);
-                System.out.println("== Search query " + call.request().url());
+                //System.out.println("== Search query " + call.request().url());
                 call.enqueue(new Callback() {
                     @Override
                     public void onResponse(Call call, Response response) {
                         searchResultList = (List<Products>) response.body();
-                        System.out.println("== " + response.body());
+                        //System.out.println("== " + response.body());
                         generateDataList(searchResultList);
                         categoryAdapterDummy.notifyDataSetChanged();
                     /*if (searchResultList != null){
